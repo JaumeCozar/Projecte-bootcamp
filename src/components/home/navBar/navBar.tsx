@@ -14,7 +14,7 @@ import {
 export function NavBarra1(){
     return (
       <div className = "NavBarra1 sticky top-0 z-50">
-        <Navbar fluid rounded className="bg-gray-500/0 dark:bg-gray-500/0">
+        <Navbar fluid rounded className="bg-black/20 dark:bg-gray-500/0">
           <NavbarBrand href="https://flowbite-react.com">
             <img
               src="/favicon.svg"
