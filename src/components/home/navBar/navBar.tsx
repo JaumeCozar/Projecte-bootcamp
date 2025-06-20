@@ -14,16 +14,14 @@ import {
 export function NavBarra1(){
     return (
       <div className = "NavBarra1 sticky top-0 z-50">
-        <Navbar fluid rounded className="bg-gray-500/0 dark:bg-gray-500/0">
-          <NavbarBrand href="https://flowbite-react.com">
+        <Navbar fluid rounded className="bg-black/20 dark:bg-gray-500/0">
+          <NavbarBrand href="#">
             <img
-              src="/favicon.svg"
-              className="mr-3 h-6 sm:h-9"
+              src="/logoBanner.png"
+              className="mr-3 h-10 sm:h-12 ml-10"
               alt="Flowbite React Logo"
             />
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Flowbite React
-            </span>
+          
           </NavbarBrand>
           <div className="flex md:order-2">
             <Dropdown
