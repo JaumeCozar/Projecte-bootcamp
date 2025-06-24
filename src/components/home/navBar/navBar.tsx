@@ -5,9 +5,13 @@ import {
   NavbarCollapse,
   NavbarToggle,
 } from "flowbite-react";
+import { Link, useLocation } from "react-router-dom";
 import "./navBar.css";
 
 export function NavBarra1() {
+
+
+  
   const [active, setActive] = useState("Home");
   const containerRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
@@ -34,7 +38,7 @@ export function NavBarra1() {
   const links = ["Home", "About", "Services", "Pricing", "Contact"];
 
   return (
-    <div className="NavBarra1 sticky top-0 z-50">
+    <div className="NavBarra1 sticky top-0 z-20">
       <Navbar fluid rounded className="bg-black/20 dark:bg-gray-500/20 p-0 relative">
         <NavbarBrand href="#">
           <img

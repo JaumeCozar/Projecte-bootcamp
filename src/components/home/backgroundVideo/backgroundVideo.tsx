@@ -3,8 +3,8 @@ import videoSource from '../../../video/videoFood.mp4'; // Asegúrate de tener e
 
 export const BackgroundVideoComponent = () => {
   return (
-    <div className="video-container">
-      <video autoPlay loop muted playsInline className="background-video">
+    <div className="video-container ">
+      <video autoPlay loop muted playsInline className="background-video sticky top-0 z-10">
         <source src={videoSource} type="video/mp4" />
         Tu navegador no soporta el video en HTML5.
       </video>
