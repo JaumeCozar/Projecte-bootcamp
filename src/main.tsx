@@ -11,17 +11,19 @@ import { BrowserRouter } from 'react-router-dom'
 import { FooterComponente } from './components/home/footer/footer.tsx'
 import DesperdicioInfo from './components/desperdicio/desperdicio.tsx'
 import { BeneficiosEffinity } from './components/beneficios/beneficios'
+import { RatingSection } from './components/rating/rating'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <StrictMode>  
     <BrowserRouter>
     
     <NavBarra1 />
     
     <BackgroundVideoComponent/>
-    <FormularioContacto />
     <DesperdicioInfo />
     <BeneficiosEffinity />
+    <RatingSection />
+    <FormularioContacto />
     </BrowserRouter>
     <FooterComponente />
 
