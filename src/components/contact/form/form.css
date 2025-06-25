@@ -1,0 +1,4 @@
+.containerForm{
+    display: flex;
+    flex-direction: row;
+}
