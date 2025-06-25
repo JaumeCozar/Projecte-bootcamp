@@ -59,7 +59,36 @@
                   key={link}
                   data-link={link}
                   className={`nav-link ${active === link ? "active" : ""}`}
-                  onClick={() => setActive(link)}
+                  onClick={() => {
+                    setActive(link);
+                    if (link === "About") {
+                      const aboutSection = document.getElementById("about-section");
+                      if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                    if (link === "Contact") {
+                      const contactSection = document.getElementById("contact-section");
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                    if (link === "Home") {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                    if (link === "Services") {
+                      const servicesSection = document.getElementById("services-section");
+                      if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                    if (link === "Pricing") {
+                      const pricingSection = document.getElementById("pricing");
+                      if (pricingSection) {
+                        pricingSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
                   onMouseEnter={(e) => moveUnderline(e.currentTarget, 0)}
                   onMouseLeave={() => {
                     const activeEl = containerRef.current?.querySelector(

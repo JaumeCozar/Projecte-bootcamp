@@ -18,7 +18,7 @@ export const BackgroundVideoComponent = () => {
       </video>
 
       {/* 🟨 Superposición de la carta */}
-      <div className="absolute inset-0 flex items-center justify-center z-20 p-4">
+      <div id="about-section" className="absolute inset-0 flex items-center justify-center z-20 p-4">
         <Carta />
       </div>
 
@@ -27,3 +27,4 @@ export const BackgroundVideoComponent = () => {
     </div>
   );
 };
+  
