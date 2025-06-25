@@ -12,6 +12,8 @@ import { FooterComponente } from './components/home/footer/footer.tsx'
 import DesperdicioInfo from './components/desperdicio/desperdicio.tsx'
 import { BeneficiosEffinity } from './components/beneficios/beneficios'
 import { RatingSection } from './components/rating/rating'
+import { Servicios } from './services/servicios'
+import { Pricing } from './pricing/pricing'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>  
@@ -22,8 +24,12 @@ createRoot(document.getElementById('root')!).render(
     <BackgroundVideoComponent/>
     <DesperdicioInfo />
     <BeneficiosEffinity />
+    <Servicios />
+    <Pricing />
     <RatingSection />
-    <FormularioContacto />
+    <div id="contact-section">
+      <FormularioContacto />
+    </div>
     </BrowserRouter>
     <FooterComponente />
 
