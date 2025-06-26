@@ -15,7 +15,7 @@ export function NavBarra1() {
   const [active, setActive] = useState("Home");
   const containerRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
-  const hoverTimeout = useRef<number | null>(null);
+  const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const moveUnderline = (el: HTMLElement | null, delay = 0) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);

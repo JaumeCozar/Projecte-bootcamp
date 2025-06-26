@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
+
+body {
+  background: #fff !important;
+  color: #222 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #fff !important;
+    color: #222 !important;
+  }
+}
+
 .carta{
     display: flex;
     flex-direction: column;
