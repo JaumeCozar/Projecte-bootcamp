@@ -37,10 +37,13 @@ const DesperdicioInfo: React.FC = () => {
       </div>
       <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto px-4">
         {data.map((item, index) => (
-          <Card key={index} className="text-center shadow-md hover:shadow-lg transition">
-            <div className="flex justify-center mb-4">{item.icon}</div>
-            <h5 className="text-xl font-semibold text-gray-800">{item.title}</h5>
-            <p className="text-gray-600 mt-2">{item.description}</p>
+          <Card
+            key={index}
+            className="card text-center"
+          >
+            <div className="flex justify-center mb-4 text-4xl text-primary">{item.icon}</div>
+            <h5 className="text-xl font-bold mb-2">{item.title}</h5>
+            <p className="text-gray-700">{item.description}</p>
           </Card>
         ))}
       </div>

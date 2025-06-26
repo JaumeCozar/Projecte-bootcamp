@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import contactImage from '../img/contacto.png'
 export function FormularioContacto() {
   return (
-    <div className="containerForm flex flex-col md:flex-row justify-around 2xl:justify-center items-center gap-8 p-4">
+    <div className="containerForm mt-10 flex flex-col md:flex-row justify-around 2xl:justify-center items-center gap-8 p-4">
       <div className="flex flex-col gap-2">
      <img src= {contactImage} className="imagen w-60 h-60 "/>
      <p className="italic text-lg">Contactanos</p>

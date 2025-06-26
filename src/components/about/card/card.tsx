@@ -10,7 +10,7 @@ export function Carta() {
           Ahorra hasta un <span className="text-teal-300">60%</span> del desperdicio de alimentos comestibles
         </h1>
         <p className="text-gray-100 text-lg md:text-xl font-medium leading-relaxed transition duration-300">
-          Rastrea, analiza y reduce automáticamente tus residuos con la solución inteligente de <strong className="text-white font-semibold">Effinity</strong>, impulsada por IA.
+          Rastrea, analiza y reduce automáticamente tus residuos <br/> con la  solución inteligente de <strong className="text-white font-semibold">Effinity</strong>.
         </p>
       </div>
     </div>

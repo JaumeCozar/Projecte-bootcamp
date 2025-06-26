@@ -7,36 +7,40 @@ import { NavBarra1 } from './components/home/navBar/navBar.tsx'
 import { BackgroundVideoComponent } from './components/home/backgroundVideo/backgroundVideo.tsx'
 //import { Carta } from './components/about/card/card.tsx'
 import { FormularioContacto } from './components/contact/form/form.tsx'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { FooterComponente } from './components/home/footer/footer.tsx'
 import DesperdicioInfo from './components/desperdicio/desperdicio.tsx'
 import { BeneficiosEffinity } from './components/beneficios/beneficios'
 import { RatingSection } from './components/rating/rating'
 import { Servicios } from './services/servicios'
 import { Pricing } from './pricing/pricing'
+import Checkout from './components/checkout/checkout'
+import EmpresaContacto from './components/contact-pay/EmpresaContacto'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>  
     <BrowserRouter>
-    
-    <NavBarra1 />
-    
-    <BackgroundVideoComponent/>
-    <DesperdicioInfo />
-    <BeneficiosEffinity />
-    <Servicios />
-    <Pricing />
-    <RatingSection />
-    <div id="contact-section">
-      <FormularioContacto />
-    </div>
+      <NavBarra1 />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <BackgroundVideoComponent/>
+            <DesperdicioInfo />
+            <BeneficiosEffinity />
+            <Servicios />
+            <Pricing />
+            <RatingSection />
+            <div id="contact-section">
+              <FormularioContacto />
+            </div>
+          </>
+        } />
+        <Route path="/comprar/:plan" element={<Checkout />} />
+        <Route path="/empresa-contacto" element={<EmpresaContacto />} />
+      </Routes>
+      <FooterComponente />
     </BrowserRouter>
-    <FooterComponente />
-
-    
-
   </StrictMode>,
-  
 )
 
 /*<NavBarra />

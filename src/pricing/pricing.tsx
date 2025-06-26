@@ -1,4 +1,4 @@
-import { Card, Button } from "flowbite-react";
+import { Card } from "flowbite-react";
 
 export const Pricing = () => {
   const planes = [
@@ -77,9 +77,14 @@ export const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <Button color={destacado ? "blue" : "gray"} fullSized>
+            <a
+              href={`/comprar/${encodeURIComponent(nombre.toLowerCase())}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-block w-full text-center ${destacado ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 hover:bg-gray-500'} text-white font-bold py-3 px-10 rounded-xl text-xl shadow-lg transition-all duration-200`}
+            >
               {destacado ? "Empezar ahora" : "Más info"}
-            </Button>
+            </a>
           </Card>
         ))}
       </div>
