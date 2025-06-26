@@ -14,13 +14,14 @@ import { BeneficiosEffinity } from './components/beneficios/beneficios'
 import { RatingSection } from './components/rating/rating'
 import { Servicios } from './services/servicios'
 import { Pricing } from './pricing/pricing'
+import { ToggleText } from './components/faq/faq.tsx'
 import Checkout from './components/checkout/checkout'
 import EmpresaContacto from './components/contact-pay/EmpresaContacto'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>  
     <BrowserRouter>
-      <NavBarra1 />
+     <NavBarra1 />
       <Routes>
         <Route path="/" element={
           <>
@@ -33,6 +34,7 @@ createRoot(document.getElementById('root')!).render(
             <div id="contact-section">
               <FormularioContacto />
             </div>
+            <ToggleText/>
           </>
         } />
         <Route path="/comprar/:plan" element={<Checkout />} />
