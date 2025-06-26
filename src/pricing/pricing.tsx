@@ -1,4 +1,5 @@
 import { Card } from "flowbite-react";
+import { CheckoutButton } from "../components/checkout/CheckoutButton";
 
 export const Pricing = () => {
   const planes = [
@@ -77,14 +78,21 @@ export const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <a
-              href={`/comprar/${encodeURIComponent(nombre.toLowerCase())}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-block w-full text-center ${destacado ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 hover:bg-gray-500'} text-white font-bold py-3 px-10 rounded-xl text-xl shadow-lg transition-all duration-200`}
-            >
-              {destacado ? "Empezar ahora" : "Más info"}
-            </a>
+            {nombre.toLowerCase() === "empresa" ? (
+              <div className="flex justify-center mt-4">
+                <a
+                  href="#contact-section"
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-full text-center text-xl shadow-lg transition-all duration-200"
+                  style={{ display: 'inline-block' }}
+                >
+                  Contactar para contratar
+                </a>
+              </div>
+            ) : (
+              <div className="flex justify-center mt-4">
+                <CheckoutButton plan={nombre.toLowerCase()} />
+              </div>
+            )}
           </Card>
         ))}
       </div>

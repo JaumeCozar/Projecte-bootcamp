@@ -9,9 +9,10 @@
   position: relative;
   color: white;
   font-weight: 500;
-  padding: 8px;
+  padding: 16px 20px;
   cursor: pointer;
   transition: color 0.2s ease;
+  font-size: 1.1rem;
 }
 
 .underline {
@@ -29,5 +30,10 @@
   left: 0;
   width: 100vw;
   z-index: 1000;
+}
+
+.NavBarra1 img {
+  height: 60px !important;
+  max-height: 70px;
 }
 
