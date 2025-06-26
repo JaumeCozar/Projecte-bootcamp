@@ -50,7 +50,7 @@ export function BeneficiosEffinity() {
               key={index}
               className="flex flex-col items-start p-6 bg-white border border-gray-200 shadow-md rounded-2xl transition hover:shadow-lg hover:ring-1 hover:ring-teal-500"
             >
-              <div className="bg-gradient-to-tr from-teal-500 to-cyan-500 p-3 rounded-full shadow mb-4 animate-pulse-slow">
+              <div className="flex justify-center bg-gradient-to-tr from-teal-500 to-cyan-500 p-3 rounded-full shadow mb-4 animate-pulse-slow">
                 {item.icon}
               </div>
               <h3 className="text-2xl font-semibold text-gray-800 mb-2">{item.titulo}</h3>

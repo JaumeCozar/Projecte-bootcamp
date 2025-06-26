@@ -1,11 +1,16 @@
 
 import { Button, Checkbox, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {Link} from "react-router-dom";
-
+import contactImage from '../img/contacto.png'
 export function FormularioContacto() {
   return (
-
-    <form className="flex max-w-md flex-col gap-4 relative z-50">
+    <div className="containerForm flex flex-col md:flex-row justify-around 2xl:justify-center items-center gap-8 p-4">
+      <div className="flex flex-col gap-2">
+     <img src= {contactImage} className="imagen w-60 h-60 "/>
+     <p className="italic text-lg">Contactanos</p>
+      </div>
+      <div>
+    <form className="flex min-w-xl flex-col gap-4 relative z-50">
 
     <div className="max-w-md">
       <div className="mb-2 block">
@@ -27,7 +32,7 @@ export function FormularioContacto() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="name">Nombre</Label>
+          <Label htmlFor="name">Nombre*</Label>
         </div>
         <TextInput id="name" type="text" required shadow />
       </div>
@@ -54,8 +59,9 @@ export function FormularioContacto() {
           </Link>
         </Label>
       </div>
-      <Button type="submit">Enviar</Button>
+      <Button type="submit" className="w-20 h-10">Enviar</Button>
     </form>
-
+    </div>
+    </div>
   );
 }
