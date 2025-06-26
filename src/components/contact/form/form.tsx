@@ -59,7 +59,7 @@ export function FormularioContacto() {
           </Link>
         </Label>
       </div>
-      <Button type="submit">Enviar</Button>
+      <Button type="submit" className="w-20 h-10">Enviar</Button>
     </form>
     </div>
     </div>
