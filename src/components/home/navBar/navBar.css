@@ -5,15 +5,22 @@
   margin-left: 100px;
     color: white;
 }
+.nav-link {
+  position: relative;
+  color: white;
+  font-weight: 500;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
 
 .underline {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: white;
-  transition: width 0.3s ease, transform 0.3s ease;
-  will-change: width, transform;
-  z-index: 9999; /* SUPERPONE por encima de todo */
+  background: white;
+  transition: transform 0.3s ease, width 0.3s ease;
+  will-change: transform, width;
 }
 
 .NavBarra1 {

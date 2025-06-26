@@ -1,33 +1,18 @@
-import { Card } from "flowbite-react";
-import './card.css'
-import testImage from '../img/planta.png'
+import './card.css';
+//import testImage from '../img/planta.png';
+
 
 export function Carta() {
   return (
-    <Card
-      horizontal
-      imgSrc={testImage}
-      className="cartaComponente bg-white/30 backdrop-blur-xl border-none shadow-lg max-w-sm w-80"
-    >
-      <div className="p-4">
-        <h5 className="text-3xl font-bold tracking-tight text-white mb-4">
-          Transforma tus residuos en oportunidades
-        </h5>
-        <p className="text-lg text-center text-gray-300 mb-6">
-          En <strong>Effinity</strong>, convertimos tus residuos en valor.
+    <div className="absolute inset-0 z-20 flex items-center justify-center px-6 text-center">
+      <div className="bg-gray-900/20 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-4xl">
+        <h1 className="text-white text-4xl md:text-5xm font-extrabold leading-tight mb-6 drop-shadow-xl transition duration-300">
+          Ahorra hasta un <span className="text-teal-300">60%</span> del desperdicio de alimentos comestibles
+        </h1>
+        <p className="text-gray-100 text-lg md:text-xl font-medium leading-relaxed transition duration-300">
+          Rastrea, analiza y reduce automáticamente tus residuos con la solución inteligente de <strong className="text-white font-semibold">Effinity</strong>, impulsada por IA.
         </p>
-
-        <p className="text-base text-slate-200 leading-relaxed text-center sm:text-left">
-          Analizamos <strong>dónde</strong>, <strong>cómo</strong> y <strong>por qué</strong> pierdes materias primas o alimentos, y te entregamos <em>insights</em> claros para:
-        </p>
-
-        <ul className="list-disc list-inside mt-4 space-y-2 text-gray-300 text-base sm:text-left text-center sm:text-justify">
-          <li><strong>Optimizar</strong> tus procesos</li>
-          <li><strong>Reducir</strong> pérdidas</li>
-          <li><strong>Aumentar</strong> la rentabilidad</li>
-          <li><strong>Mejorar</strong> la sostenibilidad de tu empresa</li>
-        </ul>
       </div>
-    </Card>
+    </div>
   );
 }

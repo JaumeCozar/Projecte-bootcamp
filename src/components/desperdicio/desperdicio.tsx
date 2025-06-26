@@ -33,7 +33,7 @@ const DesperdicioInfo: React.FC = () => {
   return (
     <section className="bg-gray-50 py-10">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">Reduce tus pérdidas</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Reduce tus pérdidas</h2>
       </div>
       <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto px-4">
         {data.map((item, index) => (
