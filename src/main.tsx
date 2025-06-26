@@ -14,7 +14,7 @@ import { BeneficiosEffinity } from './components/beneficios/beneficios'
 import { RatingSection } from './components/rating/rating'
 import { Servicios } from './services/servicios'
 import { Pricing } from './pricing/pricing'
-
+import { ToggleText } from './components/faq/faq.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>  
     <BrowserRouter>
@@ -30,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
     <div id="contact-section">
       <FormularioContacto />
     </div>
+    <ToggleText/>
     </BrowserRouter>
     <FooterComponente />
 
