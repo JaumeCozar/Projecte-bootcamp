@@ -96,7 +96,7 @@ export function NavBarra1() {
           <button
             aria-label="Toggle dark mode"
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors"
             style={{ fontSize: 22 }}
           >
             {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
