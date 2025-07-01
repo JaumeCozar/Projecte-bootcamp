@@ -11,12 +11,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { FooterComponente } from './components/home/footer/footer.tsx'
 import DesperdicioInfo from './components/desperdicio/desperdicio.tsx'
 import { BeneficiosEffinity } from './components/beneficios/beneficios'
+import { ToggleText } from './components/faq/faq.tsx'
 import { RatingSection } from './components/rating/rating'
 import { Servicios } from './services/servicios'
 import { Pricing } from './pricing/pricing'
-import { ToggleText } from './components/faq/faq.tsx'
 import Checkout from './components/checkout/checkout'
 import EmpresaContacto from './components/contact-pay/EmpresaContacto'
+import { PoliticaPrivacidad } from './components/privacidad/politicaprivacidad'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>  
@@ -30,15 +31,14 @@ createRoot(document.getElementById('root')!).render(
             <BeneficiosEffinity />
             <Servicios />
             <Pricing />
+            <ToggleText />
             <RatingSection />
-            <div id="contact-section">
-              <FormularioContacto />
-            </div>
-            <ToggleText/>
           </>
         } />
         <Route path="/comprar/:plan" element={<Checkout />} />
         <Route path="/empresa-contacto" element={<EmpresaContacto />} />
+        <Route path="/contacto" element={<FormularioContacto />} />
+        <Route path="/privacidad" element={<PoliticaPrivacidad />} />
       </Routes>
       <FooterComponente />
     </BrowserRouter>

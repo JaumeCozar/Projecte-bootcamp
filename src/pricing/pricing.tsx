@@ -36,10 +36,10 @@ export const Pricing = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-white text-gray-800" id="pricing">
+    <section className="py-16 px-6 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100" id="pricing">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Planes y Precios</h2>
-        <p className="text-gray-600 text-lg">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 dark:text-white">Planes y Precios</h2>
+        <p className="text-gray-600 text-lg dark:text-gray-300">
           Escoge el plan que mejor se adapte a las necesidades de tu empresa.
         </p>
       </div>
@@ -48,15 +48,11 @@ export const Pricing = () => {
         {planes.map(({ nombre, precio, beneficios, destacado }, index) => (
           <Card
             key={index}
-            className={`p-6 border ${
-              destacado
-                ? "border-blue-600 shadow-lg bg-blue-50"
-                : "border-gray-200 bg-white"
-            } transition duration-300 hover:shadow-xl`}
+            className={`flex flex-col items-start p-6 bg-white border border-gray-200 shadow-md rounded-2xl transition hover:shadow-lg hover:ring-1 hover:ring-teal-500 dark:bg-gray-900 dark:text-gray-100 ${destacado ? 'ring-2 ring-blue-600' : ''}`}
           >
-            <h3 className="text-2xl font-semibold mb-4">{nombre}</h3>
+            <h3 className="text-2xl font-semibold mb-4 dark:text-gray-100">{nombre}</h3>
             <p className="text-3xl font-bold mb-6">{precio}</p>
-            <ul className="mb-6 space-y-3 text-gray-700">
+            <ul className="mb-6 space-y-3 text-gray-700 dark:text-gray-300">
               {beneficios.map((beneficio, i) => (
                 <li key={i} className="flex items-center">
                   <svg
@@ -79,7 +75,7 @@ export const Pricing = () => {
               ))}
             </ul>
             {nombre.toLowerCase() === "empresa" ? (
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-4 w-full">
                 <a
                   href="#contact-section"
                   className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-full text-center text-xl shadow-lg transition-all duration-200"
@@ -89,7 +85,7 @@ export const Pricing = () => {
                 </a>
               </div>
             ) : (
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-4 w-full">
                 <CheckoutButton plan={nombre.toLowerCase()} />
               </div>
             )}
