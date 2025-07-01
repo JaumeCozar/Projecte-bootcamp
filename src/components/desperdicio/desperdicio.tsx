@@ -39,7 +39,7 @@ const DesperdicioInfo: React.FC = () => {
         {data.map((item, index) => (
           <Card
             key={index}
-            className="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 shadow-md"
+            className="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 shadow-md border border-gray-200 transition hover:shadow-lg hover:ring-1 hover:ring-blue-500 dark:border-gray-700"
           >
             <div className="flex justify-center mb-4 text-4xl text-primary">{item.icon}</div>
             <h5 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">{item.title}</h5>

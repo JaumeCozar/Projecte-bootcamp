@@ -26,7 +26,7 @@ export default function EmpresaContacto() {
   return (
     <section className="py-8 px-2 min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
       <form
-        className="bg-white p-4 rounded-xl shadow-lg max-w-md w-full border-2 border-blue-400"
+          className="bg-white dark:bg-gray-900 dark:text-gray-100 p-4 rounded-xl shadow-lg max-w-md w-full border-2 border-blue-400"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-4 text-center text-blue-700 drop-shadow">Contacto para Empresas</h2>

@@ -8,25 +8,30 @@ const toggleItems = [
   {
     title: "¿Qué es Effinity?",
     content:
-      "Effinity es una plataforma en la que analizamos dónde, cómo y por qué pierdes materias primas o alimentos",
+      "Effinity es una plataforma inteligente basada en IA que ayuda a las empresas del sector alimentario a detectar, analizar y reducir el desperdicio de materias primas y alimentos. Recopilamos datos del proceso productivo y te ofrecemos informes visuales y recomendaciones para optimizar operaciones y ahorrar recursos.",
   },
   {
-    title: "¿Que tipo de negocios son los mas beneficiados con Effinity?",
-    content: "Lorem ipsum dolor sit amet",
+    title: "¿Qué tipo de negocios son los más beneficiados con Effinity?",
+    content:
+      "Effinity está diseñado principalmente para cocinas industriales, restaurantes, hoteles, comedores colectivos, supermercados y empresas de procesamiento de alimentos. Cualquier negocio que maneje grandes volúmenes de productos perecederos puede beneficiarse enormemente de su implementación.",
   },
   {
-    title: "¿Cuanto puedo ahorrar usando Effinity?",
-    content: "Lorem ipsum dolor sit amet",
+    title: "¿Cuánto puedo ahorrar usando Effinity?",
+    content:
+      "Nuestros clientes pueden ahorrar hasta un 60% del desperdicio alimentario comestible. Esto se traduce en ahorros económicos directos, mayor eficiencia operativa y una mejora significativa en la sostenibilidad del negocio.",
   },
   {
-    title: "¿Es dificil usar Effinity?",
-    content: "Lorem ipsum dolor sit amet",
+    title: "¿Es difícil usar Effinity?",
+    content:
+      "No. Effinity está diseñado para ser intuitivo y fácil de usar. Nuestro sistema se adapta a tus procesos y no requiere conocimientos técnicos avanzados. Además, ofrecemos capacitación y soporte para asegurar una integración fluida.",
   },
   {
-    title: "¿Cuanto es el costo de implementar Effinity?",
-    content: "Lorem ipsum dolor sit amet",
-  },
-];
+    title: "¿Cuál es el costo de implementar Effinity?",
+    content:
+      "El costo depende del tamaño de tu operación y del nivel de personalización requerido. Ofrecemos planes flexibles según tus necesidades, con una relación costo-beneficio altamente rentable gracias al ahorro que genera la reducción de desperdicios. Contáctanos para una cotización sin compromiso.",
+  }
+]
+;
 
 // Subcomponente que representa una sola entrada
 const ToggleItem: React.FC<{ title: string; content: string }> = ({

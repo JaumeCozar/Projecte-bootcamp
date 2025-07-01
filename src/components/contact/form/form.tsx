@@ -1,10 +1,9 @@
-
 import { Button, Checkbox, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {Link} from "react-router-dom";
 import contactImage from '../img/contacto.png'
 export function FormularioContacto() {
   return (
-    <div className="containerForm mt-10 flex flex-col md:flex-row justify-around 2xl:justify-center items-center gap-8 p-4">
+    <div className="containerForm mt-15 flex flex-col md:flex-row justify-around 2xl:justify-center items-center gap-8 p-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
       <div className="flex flex-col gap-2">
      <img src= {contactImage} className="imagen w-60 h-60 "/>
      <p className="italic text-lg">Contactanos</p>

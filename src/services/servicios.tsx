@@ -33,7 +33,7 @@ export const Servicios = () => {
         {servicios.map((servicio, index) => (
           <Card
             key={index}
-            className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition duration-300 dark:bg-gray-900 dark:text-gray-100"
+            className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition duration-300 dark:bg-gray-900 dark:text-gray-100 hover:ring-1 hover:ring-blue-500"
           >
             <div className="flex flex-col items-center text-center space-y-4 p-6">
               {servicio.icono}

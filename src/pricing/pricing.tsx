@@ -77,7 +77,7 @@ export const Pricing = () => {
             {nombre.toLowerCase() === "empresa" ? (
               <div className="flex justify-center mt-4 w-full">
                 <a
-                  href="#contact-section"
+                  href="/contacto"
                   className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-full text-center text-xl shadow-lg transition-all duration-200"
                   style={{ display: 'inline-block' }}
                 >

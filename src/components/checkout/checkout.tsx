@@ -50,7 +50,7 @@ const Checkout = () => {
             </ul>
             {planInfo.nombre === "empresa" ? (
               <a
-                href="/empresa-contacto"
+                href="/contacto"
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl text-xl shadow-lg transition-all duration-200 flex justify-center items-center w-full text-center mt-4"
               >
                 Contactar para contratar
