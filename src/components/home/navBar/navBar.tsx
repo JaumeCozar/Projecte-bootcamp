@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
-  NavbarCollapse,
-  NavbarToggle,
+  Drawer,
 } from "flowbite-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./navBar.css";
@@ -23,6 +22,7 @@ export function NavBarra1() {
     document.documentElement.classList.contains("dark") ||
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const moveUnderline = (el: HTMLElement | null, delay = 0) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
@@ -81,39 +81,83 @@ export function NavBarra1() {
 
   return (
     <div className="NavBarra1 sticky top-0 z-20">
-      <Navbar fluid className="bg-black/20 dark:bg-gray-800/80 p-0 relative">
-        <NavbarBrand>
-          <Link to="/">
-            <img
-              src="/logoBanner.png"
-              className="mr-3 h-10 sm:h-12 ml-10"
-              alt="Logo"
-            />
-          </Link>
-        </NavbarBrand>
+      <Navbar fluid className="bg-black/20 dark:bg-gray-800/80 p-0 relative border-b border-gray-200 dark:border-gray-700">
+        {/* Logo solo visible si Drawer no está abierto en móvil */}
+        {!(drawerOpen && window.innerWidth < 768) && (
+          <NavbarBrand>
+            <Link to="/">
+              <img
+                src="/logoBanner.png"
+                className="mr-3 h-14 sm:h-16 ml-10 max-h-20"
+                alt="Logo"
+              />
+            </Link>
+          </NavbarBrand>
+        )}
 
         <div className="flex md:order-2 items-center gap-2 pr-4">
-          <button
-            aria-label="Toggle dark mode"
-            onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors"
-            style={{ fontSize: 22 }}
-          >
-            {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
-          </button>
-          <NavbarToggle />
+          {!(drawerOpen && window.innerWidth < 768) && (
+            <>
+              <button
+                className="md:hidden p-2 rounded bg-gray-200 dark:bg-gray-700"
+                aria-label="Abrir menú"
+                onClick={() => setDrawerOpen(true)}
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700 dark:text-white"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+              </button>
+              <button
+                aria-label="Toggle dark mode"
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors"
+                style={{ fontSize: 22 }}
+              >
+                {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
+              </button>
+            </>
+          )}
         </div>
 
-        <NavbarCollapse>
+        {/* Links en escritorio */}
+        <div className="hidden md:flex items-center justify-end w-full mr-10">
           <div className="nav-container" ref={containerRef}>
-            {links.map((link) => (
-              link === "Contact" ? (
+            {links.map((link) => {
+              let to = "/";
+              if (link === "Contact") to = "/contacto";
+              return (
                 <Link
                   key={link}
-                  to="/contacto"
+                  to={to}
                   data-link={link}
-                  className={`nav-link ${active === link ? "active" : ""}`}
-                  onClick={() => setActive(link)}
+                  className={`nav-link${active === link ? " active" : ""}`}
+                  onClick={async (e) => {
+                    setActive(link);
+                    if (link === "Contact") return;
+                    e.preventDefault();
+                    if (location.pathname !== "/") {
+                      navigate("/");
+                      setTimeout(() => {
+                        if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
+                        if (link === "Services") {
+                          const el = document.getElementById("services-section");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }
+                        if (link === "Pricing") {
+                          const el = document.getElementById("pricing");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }, 300);
+                    } else {
+                      if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
+                      if (link === "Services") {
+                        const el = document.getElementById("services-section");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }
+                      if (link === "Pricing") {
+                        const el = document.getElementById("pricing");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
                   onMouseEnter={(e) => moveUnderline(e.currentTarget, 0)}
                   onMouseLeave={() => {
                     const activeEl = containerRef.current?.querySelector(
@@ -124,87 +168,71 @@ export function NavBarra1() {
                 >
                   {link}
                 </Link>
-              ) : (
-                <div
-                  key={link}
-                  data-link={link}
-                  className={`nav-link ${active === link ? "active" : ""}`}
-                  onClick={async () => {
-                    setActive(link);
-                    if (link === "About") {
-                      if (location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => {
-                          const aboutSection = document.getElementById("about-section");
-                          if (aboutSection) {
-                            aboutSection.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }, 300);
-                      } else {
-                        const aboutSection = document.getElementById("about-section");
-                        if (aboutSection) {
-                          aboutSection.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                    }
-                    if (link === "Home") {
-                      if (location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => {
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }, 300);
-                      } else {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                    }
-                    if (link === "Services") {
-                      if (location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => {
-                          const servicesSection = document.getElementById("services-section");
-                          if (servicesSection) {
-                            servicesSection.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }, 300);
-                      } else {
-                        const servicesSection = document.getElementById("services-section");
-                        if (servicesSection) {
-                          servicesSection.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                    }
-                    if (link === "Pricing") {
-                      if (location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => {
-                          const pricingSection = document.getElementById("pricing");
-                          if (pricingSection) {
-                            pricingSection.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }, 300);
-                      } else {
-                        const pricingSection = document.getElementById("pricing");
-                        if (pricingSection) {
-                          pricingSection.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                    }
-                  }}
-                  onMouseEnter={(e) => moveUnderline(e.currentTarget, 0)}
-                  onMouseLeave={() => {
-                    const activeEl = containerRef.current?.querySelector(
-                      `[data-link="${active}"]`
-                    ) as HTMLElement | null;
-                    moveUnderline(activeEl, 300);
-                  }}
-                >
-                  {link}
-                </div>
-              )
-            ))}
+              );
+            })}
             <div className="underline" ref={underlineRef}></div>
           </div>
-        </NavbarCollapse>
+        </div>
+        {/* Drawer para móvil */}
+        {drawerOpen && (
+          <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} position="right" className="md:hidden z-50 fixed right-0">
+            <div className="flex items-center justify-end p-4 border-b">
+              <button
+                aria-label="Cerrar menú"
+                onClick={() => setDrawerOpen(false)}
+                className="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700 dark:text-white"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+              </button>
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+              {links.map((link) => {
+                let to = "/";
+                if (link === "Contact") to = "/contacto";
+                return (
+                  <Link
+                    key={link}
+                    to={to}
+                    data-link={link}
+                    className={`block py-3 px-4 text-lg font-medium rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${active === link ? "text-cyan-600 dark:text-cyan-400" : "text-gray-900 dark:text-white"}`}
+                    onClick={async (e) => {
+                      setActive(link);
+                      setDrawerOpen(false);
+                      if (link === "Contact") return;
+                      e.preventDefault();
+                      if (location.pathname !== "/") {
+                        navigate("/");
+                        setTimeout(() => {
+                          if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
+                          if (link === "Services") {
+                            const el = document.getElementById("services-section");
+                            if (el) el.scrollIntoView({ behavior: "smooth" });
+                          }
+                          if (link === "Pricing") {
+                            const el = document.getElementById("pricing");
+                            if (el) el.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }, 300);
+                      } else {
+                        if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
+                        if (link === "Services") {
+                          const el = document.getElementById("services-section");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }
+                        if (link === "Pricing") {
+                          const el = document.getElementById("pricing");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }
+                    }}
+                  >
+                    {link}
+                  </Link>
+                );
+              })}
+            </div>
+          </Drawer>
+        )}
       </Navbar>
     </div>
   );
