@@ -78,7 +78,7 @@ const ToggleItem: React.FC<{ title: string; content: string }> = ({
           isOpen ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-md text-gray-700 dark:text-white shadow-inner animate-fade-in">
+        <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-b-2xl text-gray-700 dark:text-white shadow-inner animate-fade-in">
           {content}
         </div>
       </div>

@@ -23,6 +23,7 @@ export function NavBarra1() {
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
   const moveUnderline = (el: HTMLElement | null, delay = 0) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
@@ -64,6 +65,14 @@ export function NavBarra1() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const links = ["Home", "Services", "Pricing", "Contact"];
 
   const toggleTheme = () => {
@@ -83,39 +92,16 @@ export function NavBarra1() {
     <div className="NavBarra1 sticky top-0 z-20">
       <Navbar fluid className="bg-black/20 dark:bg-gray-800/80 p-0 relative border-b border-gray-200 dark:border-gray-700">
         {/* Logo solo visible si Drawer no está abierto en móvil */}
-        {!(drawerOpen && window.innerWidth < 768) && (
-          <NavbarBrand>
-            <Link to="/">
-              <img
-                src="/logoBanner.png"
-                className="mr-3 h-14 sm:h-16 ml-10 max-h-20"
-                alt="Logo"
-              />
-            </Link>
-          </NavbarBrand>
+        {!(drawerOpen && isMobile) && (
+          <NavbarBrand href="/">
+          <img
+            src="/logoBanner.png"
+            className="mr-3 h-10 sm:h-12 ml-10"
+            alt="Logo"
+          />
+        </NavbarBrand>
+        
         )}
-
-        <div className="flex md:order-2 items-center gap-2 pr-4">
-          {!(drawerOpen && window.innerWidth < 768) && (
-            <>
-              <button
-                className="md:hidden p-2 rounded bg-gray-200 dark:bg-gray-700"
-                aria-label="Abrir menú"
-                onClick={() => setDrawerOpen(true)}
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700 dark:text-white"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
-              </button>
-              <button
-                aria-label="Toggle dark mode"
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors"
-                style={{ fontSize: 22 }}
-              >
-                {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
-              </button>
-            </>
-          )}
-        </div>
 
         {/* Links en escritorio */}
         <div className="hidden md:flex items-center justify-end w-full mr-10">
@@ -172,6 +158,28 @@ export function NavBarra1() {
             })}
             <div className="underline" ref={underlineRef}></div>
           </div>
+        </div>
+        {/* Iconos a la derecha */}
+        <div className="flex items-center gap-2 pr-4 ml-auto">
+          {!(drawerOpen && isMobile) && (
+            <>
+              <button
+                className="md:hidden p-2 rounded bg-gray-200 dark:bg-gray-700"
+                aria-label="Abrir menú"
+                onClick={() => setDrawerOpen(true)}
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700 dark:text-white"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+              </button>
+              <button
+                aria-label="Toggle dark mode"
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors"
+                style={{ fontSize: 22 }}
+              >
+                {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
+              </button>
+            </>
+          )}
         </div>
         {/* Drawer para móvil */}
         {drawerOpen && (
