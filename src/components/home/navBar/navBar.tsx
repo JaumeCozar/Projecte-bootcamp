@@ -9,9 +9,6 @@ import "./navBar.css";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 export function NavBarra1() {
-
-
-  
   const [active, setActive] = useState("Home");
   const containerRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
@@ -23,6 +20,17 @@ export function NavBarra1() {
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // Detectar si es móvil
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const moveUnderline = (el: HTMLElement | null, delay = 0) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
@@ -43,7 +51,6 @@ export function NavBarra1() {
   }, [active]);
 
   useEffect(() => {
-    // Al montar, lee la preferencia de localStorage o el sistema
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
@@ -52,7 +59,6 @@ export function NavBarra1() {
       document.documentElement.classList.remove("dark");
       setIsDark(false);
     } else {
-      // Si no hay preferencia, usa el sistema
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (prefersDark) {
         document.documentElement.classList.add("dark");
@@ -82,13 +88,13 @@ export function NavBarra1() {
   return (
     <div className="NavBarra1 sticky top-0 z-20">
       <Navbar fluid className="bg-black/20 dark:bg-gray-800/80 p-0 relative border-b border-gray-200 dark:border-gray-700">
-        {/* Logo solo visible si Drawer no está abierto en móvil */}
-        {!(drawerOpen && window.innerWidth < 768) && (
+        {/* Logo visible solo si Drawer no está abierto */}
+        {!(drawerOpen && isMobile) && (
           <NavbarBrand>
             <Link to="/">
               <img
-                src="/logoBanner.png"
-                className="mr-3 h-14 sm:h-16 ml-10 max-h-20"
+                src={isMobile ? "/logosintexto.png" : "/logoBanner.png"}
+                className={`mr-3 ml-10 max-h-20 ${isMobile ? "h-12" : "h-14 sm:h-16"}`}
                 alt="Logo"
               />
             </Link>
@@ -96,7 +102,7 @@ export function NavBarra1() {
         )}
 
         <div className="flex md:order-2 items-center gap-2 pr-4">
-          {!(drawerOpen && window.innerWidth < 768) && (
+          {!(drawerOpen && isMobile) && (
             <>
               <button
                 className="md:hidden p-2 rounded bg-gray-200 dark:bg-gray-700"
@@ -117,7 +123,7 @@ export function NavBarra1() {
           )}
         </div>
 
-        {/* Links en escritorio */}
+        {/* Links de navegación - solo en escritorio */}
         <div className="hidden md:flex items-center justify-end w-full mr-10">
           <div className="nav-container" ref={containerRef}>
             {links.map((link) => {
@@ -173,7 +179,8 @@ export function NavBarra1() {
             <div className="underline" ref={underlineRef}></div>
           </div>
         </div>
-        {/* Drawer para móvil */}
+
+        {/* Drawer en móvil */}
         {drawerOpen && (
           <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} position="right" className="md:hidden z-50 fixed right-0">
             <div className="flex items-center justify-end p-4 border-b">

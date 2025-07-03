@@ -3,8 +3,9 @@
   display: flex;
   gap: 1.5rem;
   margin-left: 100px;
-    color: white;
+  color: white;
 }
+
 .nav-link {
   position: relative;
   color: white;
@@ -37,3 +38,21 @@
   max-height: 70px;
 }
 
+/* Ajustes para el contenedor de hamburguesa y dark mode */
+.NavBarra1 .flex.md\:order-2 {
+  margin-left: auto; /* empuja el contenedor a la derecha */
+  padding-right: 1rem; /* espacio a la derecha */
+}
+
+@media (max-width: 767px) {
+  /* En móviles y tablets: quitar margen a nav links para evitar desplazamiento */
+  .nav-container {
+    margin-left: 0;
+  }
+
+  /* Empujar botones hamburguesa y dark mode a la derecha */
+  .NavBarra1 .flex.md\:order-2 {
+    margin-left: auto;
+    padding-right: 1rem;
+  }
+}
