@@ -104,7 +104,7 @@ export function NavBarra1() {
         )}
 
         {/* Links en escritorio */}
-        <div className="hidden md:flex items-center justify-end w-full mr-10">
+        <div className="hidden md:flex items-center justify-end w-full mr-45">
           <div className="nav-container" ref={containerRef}>
             {links.map((link) => {
               let to = "/";
@@ -160,7 +160,7 @@ export function NavBarra1() {
           </div>
         </div>
         {/* Iconos a la derecha */}
-        <div className="flex items-center gap-2 pr-4 ml-auto">
+        <div className="flex items-center gap-2 pr-4 mr-7">
           {!(drawerOpen && isMobile) && (
             <>
               <button
