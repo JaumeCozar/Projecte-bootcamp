@@ -5,7 +5,7 @@ export function FooterComponente() {
   return (
     <Footer container className="rounded-none">
       <FooterCopyright href="#" by="Flowbite™" year={2022} />
-      <FooterLinkGroup>
+      <FooterLinkGroup className="flex justify-end w-full">
         {/* <FooterLink href="#">About</FooterLink> */}
         <Link to="/privacidad" className="text-cyan-600 hover:underline">
           Privacy Policy
